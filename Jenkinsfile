@@ -2,16 +2,11 @@ pipeline { // Define the pipeline
 
   agent any // Run on any available Jenkins agent
 
-  triggers { // Define build triggers
-    github( // Trigger on pushes to your GitHub repository
-      branches: 'master', // Monitor changes in the 'master' branch (or other branches/tags)
-      traits: [ // Optional configuration
-        permitAll( // Allow all users with write access to trigger builds
-          // Or use `filter([users: 'username1', userGroups: 'developers'])` to restrict
-        )
-      ]
+  triggers {
+    githubBranches( // Trigger on pushes to specific branches
+        branches: 'master' // Replace 'master' with your branch names (comma-separated)
     )
-  }
+}
 
   stages { // Define pipeline stages
     stage('Checkout') { // Stage for checking out code from GitHub
