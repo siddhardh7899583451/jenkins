@@ -52,3 +52,4 @@ pipeline { // Define the pipeline
         }
 
         stage
+    }
